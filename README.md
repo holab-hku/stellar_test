@@ -18,7 +18,7 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
    
   </li>
   
-  <li> <strong>Create a directory and clone this repository:</strong> <code>git clone </code> </li>
+  <li> <strong>Create a directory and clone this repository:</strong> <code>git clone https://github.com/holab-hku/stellar_test.git</code> </li>
   <li> <strong>Running the main script:</strong></li><br>
 </ol>
 
@@ -48,7 +48,7 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
   .
   ├── output_dir: #
   │   ├── 5.1: #
-  │   │   ├── analysis: #
+  │   │   ├── analysis: #This is where the analysis on the results of STAR is performed after STARSolo is carried out on exp5.1 data
   │   │   │   ├── 5.1_barcodes_classification.csv
   │   │   │   ├── 5.1.human_R1.fastq.gz
   │   │   │   ├── 5.1.human_R2.fastq.gz
@@ -61,15 +61,15 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
   │   │   │   ├── matrix.csv
   │   │   │   ├── matrix.mtx.gz
   │   │   │   └── MouseFilteredAligned.out.sam.bam
-  │   │   ├── Log.final.out
-  │   │   ├── Log.out
-  │   │   ├── Log.progress.out
-  │   │   ├── SJ.out.tab
+  │   │   ├── Log.final.out: #Original Log.final.out produced by STARSolo
+  │   │   ├── Log.out: #Original Log.out produced by STARSolo
+  │   │   ├── Log.progress.out #Original Log.progress.out produced by STARSolo
+  │   │   ├── SJ.out.tab: #Original SJ.out.tab produced by STARSolo
   │   │   └── Solo.out
   │   │       ├── Barcodes.stats
   │   │       └── Gene
   │   │           ├── Features.stats
-  │   │           ├── filtered
+  │   │           ├── filtered #The three files barcodes.tsv, features.tsv and matrix.mtx originally present in this directory have been shifted to analysis dir
   │   │           ├── raw
   │   │           │   ├── barcodes.tsv
   │   │           │   ├── features.tsv
@@ -185,11 +185,11 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
   │   │           │   └── matrix.mtx
   │   │           ├── Summary.csv
   │   │           └── UMIperCellSorted.txt
-  │   ├── Log_STARAnalysis_5.1.txt
-  │   ├── Log_STARAnalysis_5.2.txt
-  │   ├── Log_STARAnalysis_5.3.txt
-  │   ├── Log_STARAnalysis_Human.txt
-  │   ├── Log_STARAnalysis_Mouse.txt
+  │   ├── Log_STARAnalysis_5.1.txt: #Logs of running STARSolo on exp5.1 data
+  │   ├── Log_STARAnalysis_5.2.txt: #Logs of running STARSolo on exp5.2 data
+  │   ├── Log_STARAnalysis_5.3.txt: #Logs of running STARSolo on exp5.3 data
+  │   ├── Log_STARAnalysis_Human.txt: #Logs of running STARSolo on human data initially input - exp 4
+  │   ├── Log_STARAnalysis_Mouse.txt: #Logs of running STARSolo on mouse data initially input - exp 3
   │   └── mouse
   │       ├── analysis
   │       │   ├── Aligned.sortedByCoord.out.bam
@@ -216,7 +216,7 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
   │               │   └── matrix.mtx
   │               ├── Summary.csv
   │               └── UMIperCellSorted.txt
-  └── results
+  └── results: #
       ├── 3h
       ├── 3m
       │   ├── Aligned.sortedByCoord.out.bam
