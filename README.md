@@ -440,7 +440,7 @@ A small sample data is put into the holab storage directory: <code>/storage/hola
   - **exp_5.1_all_mouse_R2.fastq.gz**: Mouse R2 fastq
 
 ## Time Complexity
-The time it takes to run the script is directly related to the size of the fastq files fed. On running the script on human and mouse each R1(around 7GB) and R2(around 6GB) fastq files, it took around 2hr 5min to complete the whole process.
+The time it takes to run the script is directly related to the size of the fastq files fed. On running the script on human and mouse each R1(around 7GB) and R2(around 6GB) fastq files, it took around 2hr 20min to complete the whole process.
 
 
 ## Caution
