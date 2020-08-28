@@ -46,21 +46,21 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
   
   ```bash
   .
-  ├── output_dir: #
-  │   ├── 5.1: #
+  ├── output_dir: #This contains the data on which the initial STAR is run and all the processing takes place
+  │   ├── 5.1: #This is where the STARSolo results on the dataset for exp5.1 are put and split into human and mouse individually. The same goes for exp5.2 and 5.3
   │   │   ├── analysis: #This is where the analysis on the results of STAR is performed after STARSolo is carried out on exp5.1 data
-  │   │   │   ├── 5.1_barcodes_classification.csv
-  │   │   │   ├── 5.1.human_R1.fastq.gz
+  │   │   │   ├── 5.1_barcodes_classification.csv: #Labelled barcode file classifying each barcode
+  │   │   │   ├── 5.1.human_R1.fastq.gz:
   │   │   │   ├── 5.1.human_R2.fastq.gz
   │   │   │   ├── 5.1.mouse_R1.fastq.gz
   │   │   │   ├── 5.1.mouse_R2.fastq.gz
-  │   │   │   ├── Aligned.sortedByCoord.out.bam
-  │   │   │   ├── barcodes.tsv.gz
-  │   │   │   ├── features.tsv.gz
-  │   │   │   ├── HumanFilteredAligned.out.sam.bam
-  │   │   │   ├── matrix.csv
-  │   │   │   ├── matrix.mtx.gz
-  │   │   │   └── MouseFilteredAligned.out.sam.bam
+  │   │   │   ├── Aligned.sortedByCoord.out.bam: #BAM file producd by STARSolo
+  │   │   │   ├── barcodes.tsv.gz: #Brought from filtered dir
+  │   │   │   ├── features.tsv.gz: #Brought from filtered dir
+  │   │   │   ├── HumanFilteredAligned.out.sam.bam: #BAM file formed using the human barcodes present in the labelled csv
+  │   │   │   ├── matrix.csv: #Spare matrix in csv format - Matrix produced by R pckage Seurat
+  │   │   │   ├── matrix.mtx.gz: #: #Brought from filtered dir
+  │   │   │   └── MouseFilteredAligned.out.sam.bam: #BAM file formed using the mouse barcodes present in the labelled csv
   │   │   ├── Log.final.out: #Original Log.final.out produced by STARSolo
   │   │   ├── Log.out: #Original Log.out produced by STARSolo
   │   │   ├── Log.progress.out #Original Log.progress.out produced by STARSolo
@@ -76,7 +76,7 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
   │   │           │   └── matrix.mtx
   │   │           ├── Summary.csv
   │   │           └── UMIperCellSorted.txt
-  │   ├── 5.2
+  │   ├── 5.2: #Just like 5.1
   │   │   ├── analysis
   │   │   │   ├── 5.2_barcodes_classification.csv
   │   │   │   ├── 5.2.human_R1.fastq.gz
@@ -105,7 +105,7 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
   │   │           │   └── matrix.mtx
   │   │           ├── Summary.csv
   │   │           └── UMIperCellSorted.txt
-  │   ├── 5.3
+  │   ├── 5.3: #Just like 5.1
   │   │   ├── analysis
   │   │   │   ├── 5.3_barcodes_classification.csv
   │   │   │   ├── 5.3.human_R1.fastq.gz
@@ -159,7 +159,7 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
   │   │   ├── 5.3.mouse.sam.bam
   │   │   ├── 5.3._R1.fastq.gz
   │   │   └── 5.3._R2.fastq.gz
-  │   ├── human
+  │   ├── human: #(Exp4) This serves the same purpose as 5.1 except that the data used is the one fed by the user while running the command i.e. human R1 + R2 fastqs. 
   │   │   ├── analysis
   │   │   │   ├── Aligned.sortedByCoord.out.bam
   │   │   │   ├── barcodes.tsv.gz
@@ -190,7 +190,7 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
   │   ├── Log_STARAnalysis_5.3.txt: #Logs of running STARSolo on exp5.3 data
   │   ├── Log_STARAnalysis_Human.txt: #Logs of running STARSolo on human data initially input - exp 4
   │   ├── Log_STARAnalysis_Mouse.txt: #Logs of running STARSolo on mouse data initially input - exp 3
-  │   └── mouse
+  │   └── mouse: #(Exp3) This serves the same purpose as 5.1 except that the data used is the one fed by the user while running the command i.e. mouse R1 + R2 fastqs. 
   │       ├── analysis
   │       │   ├── Aligned.sortedByCoord.out.bam
   │       │   ├── barcodes.tsv.gz
@@ -216,9 +216,9 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
   │               │   └── matrix.mtx
   │               ├── Summary.csv
   │               └── UMIperCellSorted.txt
-  └── results: #
-      ├── 3h
-      ├── 3m
+  └── results: #This directory holds the final results we want. Each exp3-5.1-5.3 has two directories i.e. h and m. There are few Log files to Log STARSolo runs
+      ├── 3h: #STARSolo on Human reads in the mouse fed fastqs. The directory is empty because no human reads were present in the initial mouse fed fastq data
+      ├── 3m: #STARSolo on Mouse reads in the mouse fed fastqs.
       │   ├── Aligned.sortedByCoord.out.bam
       │   ├── Log.final.out
       │   ├── Log.out
@@ -238,8 +238,8 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
       │           │   └── matrix.mtx
       │           ├── Summary.csv
       │           └── UMIperCellSorted.txt
-      ├── 3mLog_STARAnalysis.txt
-      ├── 4h
+      ├── 3mLog_STARAnalysis.txt: #Log file for the 3m STARSolo
+      ├── 4h: #STARSolo on Human reads in the human fed fastqs. 
       │   ├── Aligned.sortedByCoord.out.bam
       │   ├── Log.final.out
       │   ├── Log.out
@@ -259,9 +259,9 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
       │           │   └── matrix.mtx
       │           ├── Summary.csv
       │           └── UMIperCellSorted.txt
-      ├── 4hLog_STARAnalysis.txt
-      ├── 4m
-      ├── 5.1h
+      ├── 4hLog_STARAnalysis.txt: #Log file for the 4h STARSolo
+      ├── 4m: #STARSolo on Mouse reads in the human fed fastqs. The directory is empty because no mouse reads were present in the initial human fed fastq data
+      ├── 5.1h: #STARSolo on Human reads in the chimeric(5.1 dataset) produced.
       │   ├── Aligned.sortedByCoord.out.bam
       │   ├── Log.final.out
       │   ├── Log.out
@@ -281,8 +281,8 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
       │           │   └── matrix.mtx
       │           ├── Summary.csv
       │           └── UMIperCellSorted.txt
-      ├── 5.1.Log_STARAnalysis.txt
-      ├── 5.1m
+      ├── 5.1.Log_STARAnalysis.txt: #Log file for the 5.1(Both 5.1h and 5.1m) STARSolo
+      ├── 5.1m: #STARSolo on Mouse reads in the chimeric(5.1 dataset) produced.
       │   ├── Aligned.sortedByCoord.out.bam
       │   ├── Log.final.out
       │   ├── Log.out
@@ -302,7 +302,7 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
       │           │   └── matrix.mtx
       │           ├── Summary.csv
       │           └── UMIperCellSorted.txt
-      ├── 5.2h
+      ├── 5.2h: #STARSolo on Human reads in the chimeric(5.2 dataset) produced.
       │   ├── Aligned.sortedByCoord.out.bam
       │   ├── Log.final.out
       │   ├── Log.out
@@ -322,8 +322,8 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
       │           │   └── matrix.mtx
       │           ├── Summary.csv
       │           └── UMIperCellSorted.txt
-      ├── 5.2.Log_STARAnalysis.txt
-      ├── 5.2m
+      ├── 5.2.Log_STARAnalysis.txt: #Log file for the 5.2(Both 5.2h and 5.2m) STARSolo
+      ├── 5.2m: #STARSolo on Mouse reads in the chimeric(5.2 dataset) produced.
       │   ├── Aligned.sortedByCoord.out.bam
       │   ├── Log.final.out
       │   ├── Log.out
@@ -343,7 +343,7 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
       │           │   └── matrix.mtx
       │           ├── Summary.csv
       │           └── UMIperCellSorted.txt
-      ├── 5.3h
+      ├── 5.3h: #STARSolo on Human reads in the chimeric(5.3 dataset) produced.
       │   ├── Aligned.sortedByCoord.out.bam
       │   ├── Log.final.out
       │   ├── Log.out
@@ -363,8 +363,8 @@ On each dataset of exp3-5, stellar is run -> divide the raw fastq files into two
       │           │   └── matrix.mtx
       │           ├── Summary.csv
       │           └── UMIperCellSorted.txt
-      ├── 5.3.Log_STARAnalysis.txt
-      └── 5.3m
+      ├── 5.3.Log_STARAnalysis.txt: #Log file for the 5.3(Both 5.3h and 5.3m) STARSolo
+      └── 5.3m: #STARSolo on Mouse reads in the chimeric(5.3 dataset) produced.
           ├── Aligned.sortedByCoord.out.bam
           ├── Log.final.out
           ├── Log.out
