@@ -1,8 +1,8 @@
 #!/usr/bin/perl
 use strict; use warnings;
 use POSIX;
-#use List::Util 'shuffle';
 
+#Introducing checkpoints to keep a track of progress
 my $datetime = localtime();  
 print "Checkpoint 1 - Current date and time according to the system : $datetime\n";  
 
